@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.env
+server/round-state.json
+server/excludes.json

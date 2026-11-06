@@ -1,0 +1,18 @@
+services:
+  plexmatch-server:
+    build: ./server
+    restart: unless-stopped
+    ports:
+      - "4100:4100"
+    env_file:
+      - ./server/.env
+    volumes:
+      - ./server/round-state.json:/app/round-state.json
+
+  plexmatch-client:
+    build: ./client
+    restart: unless-stopped
+    ports:
+      - "4101:80"
+    depends_on:
+      - plexmatch-server
